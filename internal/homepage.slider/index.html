@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Prevent page overflow */
+            display: flex;
+            justify-content: center; /* Center the carousel horizontally */
+            align-items: center; /* Center the carousel vertically */
+            min-height: 100vh;
+            background-color: #141926; /* Ensure the body takes at least the full viewport height */
+        }
+
+        .slider-container {
+            height: 100vh; /* Adjust as a percentage of viewport height if needed */
+            width: calc(50vh * 2); /* Calculate width based on height to maintain 2:1 */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%; /* Ensure slider takes full width of container */
+            height: 100%; /* Ensure slider takes full height of container */
+        }
+
+        .slide {
+            width: 100%; /* Each slide takes full width of the slider */
+            height: 100%; /* Each slide takes full height of the slider */
+            flex-shrink: 0; /* Prevent slides from shrinking */
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure the entire image is visible within the slide */
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider-container">
+    <div class="slider">
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/event-app-developer/images/refs/heads/main/internal.gallery/1.png" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/event-app-developer/images/refs/heads/main/internal.gallery/2.png" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/event-app-developer/images/refs/heads/main/internal.gallery/3.png" alt="Image 3">
+        </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/event-app-developer/images/refs/heads/main/internal.gallery/4.png" alt="Image 4">
+        </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/event-app-developer/images/refs/heads/main/internal.gallery/5.png" alt="Image 5">
+        </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/event-app-developer/images/refs/heads/main/internal.gallery/6.png" alt="Image 6">
+        </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/event-app-developer/images/refs/heads/main/internal.gallery/7.png" alt="Image 7">
+        </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/event-app-developer/images/refs/heads/main/internal.gallery/8.png" alt="Image 8">
+        </div>
+    </div>
+</div>
+
+<script>
+    const sliderContainer = document.querySelector('.slider-container');
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+
+    let slideIndex = 0;
+
+    function nextSlide() {
+        slideIndex = (slideIndex + 1) % slides.length;
+        updateSlider();
+    }
+
+    function updateSlider() {
+        slider.style.transform = `translateX(${-slideIndex * 100}%)`;
+    }
+
+    setInterval(nextSlide, 3000); // Change slide every 3 seconds
+</script>
+
+</body>
+</html>
